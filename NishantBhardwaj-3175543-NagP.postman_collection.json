@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "c7bc17e1-775b-42c7-87b5-41d23c4ad4f5",
+		"name": "Nag P Exam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consumer Login - using API Gateway",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer All Flights - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/consumer/flight/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"flight",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Search Flights -  using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jet Airlines\",\r\n    \"departureLocation\": \"Pune\",\r\n    \"arrivalLocation\": \"Delhi\",\r\n    \"flightClass\": \"Business\",\r\n    \"flightDate\": \"2023-03-25\"  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/flight/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"flight",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Book Flight - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"flightId\": 4,\r\n    \"userId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/flight/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"flight",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Flight Payment - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"flight\": {\r\n        \"flightId\": 4,\r\n        \"name\": \"Jet Airlines\",\r\n        \"departureLocation\": \"Pune\",\r\n        \"arrivalLocation\": \"Delhi\",\r\n        \"flightClass\": \"Business\",\r\n        \"flightDate\": \"2023-03-25\",\r\n        \"seatsAvailable\": 40,\r\n        \"price\": 4000\r\n    },\r\n    \"userId\": 1,\r\n    \"status\": \"Payment Pending\",\r\n    \"seatNumber\": \"After Payment\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/flight/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"flight",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer All Hotels - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/consumer/hotel/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"hotel",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Search Hotels -  using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Taj\",\r\n    \"city\": \"Noida\",\r\n    \"checkInDate\":\"2023-03-25\",\r\n    \"checkOutDate\":\"2023-03-26\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/hotel/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"hotel",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Shortlist Hotel -  using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hotelId\": 1,\r\n    \"userId\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/hotel/shortlist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"hotel",
+						"shortlist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer All Users - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/consumer/user/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"consumer",
+						"user",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Book Hotel - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"hotelId\": 3,\r\n    \"userId\" : 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/hotel/book",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"hotel",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer Hotel Payment - using API Gateway",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6NjI0OTIxNDk4MDAsImlhdCI6NjE2NDAwNzMwMDB9.Z1JrqHZmL2zL5P8EuHT6rVCQn5UcDEMNuHWnAXo5_Oo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 7,\r\n    \"hotel\": {\r\n        \"hotelId\": 32,\r\n        \"name\": \"Taj\",\r\n        \"city\": \"Noida\",\r\n        \"roomsAvailable\": 44,\r\n        \"checkInDate\": \"2023-03-25\",\r\n        \"checkOutDate\": \"2023-03-26\",\r\n        \"price\": 1500\r\n    },\r\n    \"userId\": 1,\r\n    \"status\": \"Payment Pending\",\r\n    \"roomNumber\": \"After Payment\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/consumer/hotel/payment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"consumer",
+						"hotel",
+						"payment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
