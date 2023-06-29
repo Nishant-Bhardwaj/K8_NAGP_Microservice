@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hotel-supplier-service-deploy
+  labels:
+    app: hotel-supplier-service
+spec:
+  selector:
+    matchLabels:
+      app: hotel-supplier-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hotel-supplier-service
+    spec:
+      containers:
+      - name: hotel-supplier-service-container
+        image: 9511/hotel-supplier-service-nishant-nagp:latest
+        imagePullPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: hotel-supplier-service-nishant 
+  #Container name USED in Docker // In K8s Service name is USED
+  labels:
+    app: hotel-supplier-service
+spec:
+  selector:
+    app: hotel-supplier-service
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085
+  type: LoadBalancer

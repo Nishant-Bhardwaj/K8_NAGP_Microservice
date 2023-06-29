@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consumer-service-deploy
+  labels:
+    app: consumer-service
+spec:
+  selector:
+    matchLabels:
+      app: consumer-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: consumer-service
+    spec:
+      containers:
+      - name: consumer-service-container
+        image: 9511/consumer-service-nishant-nagp:latest
+        imagePullPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumer-service-nishant
+  labels:
+    app: consumer-service
+spec:
+  selector:
+    app: consumer-service
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+  type: LoadBalancer
