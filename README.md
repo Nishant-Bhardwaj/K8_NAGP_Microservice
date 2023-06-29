@@ -11,3 +11,7 @@
 * kubectl apply -f k8_flight-supplier-service-nishant-nagp.yml
 
 * kubectl apply -f k8_hotel_supplier_service_nishant_nagp.yml
+
+### In K8s, the correct option for calling another service is usually not through the 'CONTAINER NAME' or 'localhost'.
+
+### Instead, applications with-in a Kubernetes cluster typically communicate with each other using 'Kubernetes Service Name'.
